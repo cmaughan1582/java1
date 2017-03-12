@@ -64,6 +64,32 @@ function trib(n){
     document.body.appendChild(div);
     return value;
 }
+function pell(n){
+    var value;
+    var div = document.createElement("div");
+    if(n < 2){
+        if(n === 1){
+            value = 1;
+        }
+        if(n === 0){
+            value = 0;
+        }
+        var para = document.createElement("p");
+        para.textContent = "Pell(" + n + ") = " + value;
+        div.appendChild(para);
+    }
+    else{
+        var left = pell(n-1);
+        var right = pell(n-2);
+        value = 2*left + right;
+        var para = document.createElement("p");
+        para.textContent = "Pell(" + n + ") = " + value;
+        div.appendChild(para);
+    }
+    document.body.appendChild(div);
+    return value;
+}
 var val = fib(11);
 var vad = trib(11);
+var vac = pell(11);
 
