@@ -10,6 +10,7 @@
 document.title = "JavaScript";
 function fib(n){
   var div = document.createElement("div");
+  div.setAttribute("class", "twoTree");
   var value;
   if(n < 2){
     if(n === 0){
@@ -26,14 +27,24 @@ function fib(n){
   }
   else{
     var left = fib(n - 1);
+    var cals = left.html.getAttribute("class");
+    left.html.setAttribute("class", cals + "twoLeft");
+    
     var right = fib(n - 2);
-    value = right + left;
+    cals = right.html.getAttribute("class");
+    right.html.setAttribute("class", cals + "twoRight");
+    
+    value = right.value + left.value;
+    
     var poop = document.createElement("p");
     poop.textContent = "Fib(" + n + ") = " + value;
     div.appendChild(poop);
+    
+    div.appendChild(left.html);
+    div.appendChild(right.html);
   }
   document.body.appendChild(div);
-  return value;
+  return {'value': value, 'html': div};
 }
 function trib(n){
     var value;
@@ -87,7 +98,7 @@ function pell(n){
         div.appendChild(para);
     }
     document.body.appendChild(div);
-    return value;
+    return {'value': value, 'html': div};
 }
 var val = fib(11);
 var vad = trib(11);

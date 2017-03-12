@@ -1,0 +1,17 @@
+#2tree{
+    display: inline-block;
+    width: 20000px;
+}
+.twoTree{
+    
+}
+.twoLeft{
+    float: left;
+    display: inline-block;
+    margin-right: 4px;
+}
+.twoRight{
+    float: right;
+    display: inline-block;
+    margin-left: 4px;
+}
