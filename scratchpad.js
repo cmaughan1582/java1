@@ -52,6 +52,7 @@ function fibTree(n , node){
 function trib(n){
     var value;
     var div = document.createElement("div");
+    div.setAttribute("class", "twotree");
     if(n < 3){
         if(n === 2){
             value = 1;
@@ -68,15 +69,34 @@ function trib(n){
     }
     else{
         var left = trib(n - 1);
+        var cals = left.html.getAttribute("class");
+        left.html.setAttribute("class", cals + " threeleft");
+        
         var mid = trib(n - 2);
+        cals = mid.html.getAttribute("class");
+        mid.html.setAttribute("class", cals + " threecenter");
+        
         var right = trib(n - 3);
-        value = left + right + mid;
+        cals = right.html.getAttribute("class");
+        right.html.setAttribute("class", cals + " threeright");
+        
+        value = left.value + right.value + mid.value;
         var par = document.createElement("p");
         par.textContent = "Trib(" + n + ") = " + value;
         div.appendChild(par);
+        
+        div.appendChild(left.html);
+        div.appendChild(mid.html);
+        div.appendChild(right.html);
+        
     }
-    document.body.appendChild(div);
-    return value;
+    return {'value': value, 'html': div};
+}
+function tribTree(n, node){
+    var display = trib(n);
+    node.appendChild(display.html);
+    node.setAttribute("id", "threetree");
+    
 }
 function pell(n){
     var value;
@@ -111,7 +131,6 @@ function pell(n){
         div.appendChild(left.html);
         div.appendChild(right.html);
     }
-    document.body.appendChild(div);
     return {'value': value, 'html': div};
 }
 function pellTree(n, node){
@@ -131,10 +150,11 @@ var divMaker = function(id, n) {
 
 var fibDiv = divMaker("twotree", 1);
 var pellDiv = divMaker("twotree", 2);
-var tribDiv = divMaker("twotree", 3);
+var tribDiv = divMaker("threetree", 3);
 fibDiv();
 pellDiv();
+tribDiv();
 var val = fibTree(11, document.querySelector(".maindiv1"));
-//var vad = trib(11);
 var vac = pellTree(11, document.querySelector(".maindiv2"));
+var vad = tribTree(11, document.querySelector(".maindiv3"));
 
