@@ -81,6 +81,7 @@ function trib(n){
 function pell(n){
     var value;
     var div = document.createElement("div");
+    div.setAttribute("class", "twotree");
     if(n < 2){
         if(n === 1){
             value = 1;
@@ -130,6 +131,7 @@ var divMaker = function(id, n) {
 
 var fibDiv = divMaker("twotree", 1);
 var pellDiv = divMaker("twotree", 2);
+var tribDiv = divMaker("twotree", 3);
 fibDiv();
 pellDiv();
 var val = fibTree(11, document.querySelector(".maindiv1"));
