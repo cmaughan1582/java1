@@ -10,7 +10,7 @@
 document.title = "JavaScript";
 function fib(n){
   var div = document.createElement("div");
-  div.setAttribute("class", "twoTree");
+  div.setAttribute("class", "twotree");
   var value;
   if(n < 2){
     if(n === 0){
@@ -22,17 +22,15 @@ function fib(n){
     var poop = document.createElement("p");
     poop.textContent = "Fib(" + n + ") = " + value;
     div.appendChild(poop);
-    
-    
   }
   else{
     var left = fib(n - 1);
     var cals = left.html.getAttribute("class");
-    left.html.setAttribute("class", cals + "twoLeft");
+    left.html.setAttribute("class", cals + " twoleft");
     
     var right = fib(n - 2);
     cals = right.html.getAttribute("class");
-    right.html.setAttribute("class", cals + "twoRight");
+    right.html.setAttribute("class", cals + " tworight");
     
     value = right.value + left.value;
     
@@ -43,9 +41,14 @@ function fib(n){
     div.appendChild(left.html);
     div.appendChild(right.html);
   }
-  document.body.appendChild(div);
   return {'value': value, 'html': div};
 }
+function fibTree(n , node){
+    var display = fib(n);
+    node.appendChild(display.html);
+    node.setAttribute("id", "twotree")
+}
+
 function trib(n){
     var value;
     var div = document.createElement("div");
@@ -91,16 +94,45 @@ function pell(n){
     }
     else{
         var left = pell(n-1);
+        var cals = left.html.getAttribute("class");
+        left.html.setAttribute("class", cals + " twoleft");
+        
         var right = pell(n-2);
-        value = 2*left + right;
+        cals = right.html.getAttribute("class");
+        right.html.setAttribute("class", cals + " tworight");
+        
+        value = 2*left.value + right.value;
+        
         var para = document.createElement("p");
         para.textContent = "Pell(" + n + ") = " + value;
         div.appendChild(para);
+        
+        div.appendChild(left.html);
+        div.appendChild(right.html);
     }
     document.body.appendChild(div);
     return {'value': value, 'html': div};
 }
-var val = fib(11);
-var vad = trib(11);
-var vac = pell(11);
+function pellTree(n, node){
+    var display = pell(n);
+    node.appendChild(display.html);
+    node.setAttribute("id", "twotree");
+}
+
+var divMaker = function(id, n) {
+	return function() {
+		var div = document.createElement('div');
+		div.setAttribute('class', 'maindiv' + n);
+		div.setAttribute('id', id);
+		document.body.appendChild(div);
+	}
+}
+
+var fibDiv = divMaker("twotree", 1);
+var pellDiv = divMaker("twotree", 2);
+fibDiv();
+pellDiv();
+var val = fibTree(11, document.querySelector(".maindiv1"));
+//var vad = trib(11);
+var vac = pellTree(11, document.querySelector(".maindiv2"));
 
