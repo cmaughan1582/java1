@@ -154,7 +154,28 @@ var tribDiv = divMaker("threetree", 3);
 fibDiv();
 pellDiv();
 tribDiv();
-var val = fibTree(11, document.querySelector(".maindiv1"));
-var vac = pellTree(11, document.querySelector(".maindiv2"));
-var vad = tribTree(11, document.querySelector(".maindiv3"));
-
+fibTree(11, document.querySelector(".maindiv1"));
+pellTree(11, document.querySelector(".maindiv2"));
+tribTree(11, document.querySelector(".maindiv3"));
+function createLink(){
+    var break1 = document.createElement("br");
+    var break2 = document.createElement("br");
+    var link = document.createElement("a");
+    link.href = "https://oeis.org/A000045"; 
+    link.text = "Fibonacci Numbers";
+    link.target = "_blank";
+    var link2 = document.createElement("a");
+    link2.href = "https://oeis.org/A000129"; 
+    link2.text = "Pell Numbers";
+    link2.target = "_blank";
+    var link3 = document.createElement("a");
+    link3.href = "https://oeis.org/A000073"; 
+    link3.text = "Tribonacci Numbers";
+    link3.target = "_blank";
+    document.body.appendChild(link);
+    document.body.appendChild(break1);
+    document.body.appendChild(link2);
+    document.body.appendChild(break2);
+    document.body.appendChild(link3);
+}
+createLink();
